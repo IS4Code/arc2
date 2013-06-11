@@ -94,7 +94,9 @@ class ARC2_SPARQL11RemoteStore extends ARC2_RemoteStore {
     $reader = new ARC2_Reader($this->a, $this);
     //$reader->setAcceptHeader('Accept: application/sparql-results+xml; q=0.9, application/rdf+xml; q=0.9, */*; q=0.1');
     // Fuseki defaults to JSON with q set.
-    $reader->setAcceptHeader('Accept: application/sparql-results+xml, application/rdf+xml, */*');
+    //$reader->setAcceptHeader('Accept: application/sparql-results+xml, application/rdf+xml, */*');
+    // Now Fuseki needs q set, but nothing after ... (0.2.7 20130416-snapshot)
+    $reader->setAcceptHeader('Accept: application/sparql-results+xml; q=0.9');
     if ($mthd == 'GET') {
       $url = $ep;
       $url .= strpos($ep, '?') ? '&' : '?';
